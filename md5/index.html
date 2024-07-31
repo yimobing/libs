@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=	, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script src="md5.js"></script>	
+	<script>	
+			var a = 'zhangsan';
+			var b = '123456';
+			var c = 'abc1234';
+			var d = '张三';
+
+			var t_a = md5(a);
+			var t_b = md5(b);
+			var t_c = md5(c);
+			var t_d = md5(d);
+			console.log('a：', t_a);
+			console.log('b:', t_b);
+			console.log('c:', t_c);
+			console.log('d:', t_d);
+
+
+
+			/**
+			 * 获取当前时间
+			 * @returns {string} 返回当前时间，格式为"年-月-日 时:分:秒"，如 2024-07-01 14:23:52
+			 */
+			function getNowTime(){
+				var date = new Date();
+				var year = date.getFullYear(),
+					month = date.getMonth() + 1;
+					day = date.getDay(),
+					hours = date.getHours(),
+					minutes = date.getMinutes(),
+					seconds = date.getSeconds();
+				if(month < 10) month = '0' + month;
+				if(day < 10) day = '0' + day;
+				if(hours < 10) hours = '0' + day;
+				if(minutes < 10) minutes = '0' + minutes;
+				if(seconds < 10) seconds = '0' + seconds;
+				return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+			}
+
+
+			/**
+			 * 获取一个随机数
+			 * @return {[type]} [description]
+			 */
+			function getRandomNumer(){
+				return Math.floor(Math.random() * 1000000000 + 1);
+			}
+
+			let time = getNowTime();
+			let randStr = getRandomNumer();
+			let timeStr = time + "*" + randStr;
+			console.log('当前时间：', time);
+			console.log('随机数：', randStr);
+			console.log('时间字符串：', timeStr);
+
+
+			let str = 'abc20240702-中国-123';
+			let newStr = md5(str).replace(/\-/g, '').toUpperCase();
+			console.log('加密前：', str);
+			console.log('加密后：', newStr);
+
+	</script>	
+</body>
+</html>
